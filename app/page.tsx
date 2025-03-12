@@ -57,7 +57,7 @@ export default function LoginPage() {
           <div className="text-center text-green-600 font-bold">Logged in successfully!</div>
         ) : (
           <form onSubmit={handleLogin}>
-            <h2 className="text-lg font-semibold text-center mb-4">Login to Proceed</h2>
+            <h2 className="text-lg font-semibold text-black text-center mb-4">Login to Proceed</h2>
             
             {/* Email Field */}
             <div className="mb-4">

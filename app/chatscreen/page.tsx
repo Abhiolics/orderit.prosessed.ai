@@ -69,10 +69,10 @@ export default function ChatScreen() {
     <div className="flex flex-col h-screen bg-gray-50 ">
       {/* Header */}
       <header className="flex items-center justify-between px-4 py-3 border-b border-gray-200 bg-white">
-        <div className="text-green-700 font-medium">OrderIt.prosessed.com</div>
+        <div className="text-green-700 font-medium">OrderIt.prosessed.ai</div>
         <div className="w-8 h-8 rounded-full overflow-hidden">
           <Image
-            src="/placeholder.svg?height=32&width=32"
+            src="/profile.avif"
             alt="User profile"
             width={32}
             height={32}
@@ -94,10 +94,10 @@ export default function ChatScreen() {
                     {message.isUser ? <User className="w-5 h-5 text-white" /> : <Bot className="w-5 h-5 text-white" />}
                   </div>
                   <div
-                    className={`rounded-2xl px-4 py-3 ${message.isUser ? "bg-blue-500 text-white" : "bg-white border border-gray-200"}`}
+                    className={`rounded-2xl px-4 py-3 ${message.isUser ? "bg-gray-200 text-white" : "bg-white border border-gray-200"}`}
                   >
                     <div className="text-sm text-black">{message.text}</div>
-                    <div className={`text-xs mt-1 ${message.isUser ? "text-blue-100" : "text-black"}`}>
+                    <div className={`text-xs mt-1 ${message.isUser ? "text-black" : "text-black"}`}>
                       {formatTime(message.timestamp)}
                     </div>
                   </div>
