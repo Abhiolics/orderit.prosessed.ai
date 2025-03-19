@@ -110,7 +110,7 @@ export default function IntegrationComponent() {
 
         {/* Note */}
         <div className="max-w-2xl mx-auto text-center bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10">
-          <h3 className="text-xl font-bold mb-2">That's not Done!</h3>
+          <h3 className="text-xl font-bold mb-2">That&apos;s not Done!</h3>
           <p className="text-white/80 mb-4">You can do lot More with Prosessed.ai</p>
           <button className="px-6 py-3 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full text-white font-medium hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 transform hover:-translate-y-1">
             Explore More 
