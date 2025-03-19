@@ -1,5 +1,5 @@
 "Use client"
-import { ArrowDown, ArrowUp, Database, FileText, Mail, MessageSquare, Phone, Users } from "lucide-react"
+import { ArrowDown,  Database, FileText, Mail, MessageSquare, Phone, Users } from "lucide-react"
 
 export default function IntegrationComponent() {
   // Source systems data
