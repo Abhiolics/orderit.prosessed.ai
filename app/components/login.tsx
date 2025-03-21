@@ -63,15 +63,15 @@ export default function LoginPage() {
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-semibold mb-2">Email address</label>
               <input 
-                type="email"
-                value={email}
-                onChange={handleEmailChange}
-                required
-                className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 ${
-                  emailError ? "border-red-500 focus:ring-red-500" : "focus:ring-blue-500"
-                }`}
-                placeholder="Enter your email"
-              />
+  type="email"
+  value={email}
+  onChange={handleEmailChange}
+  required
+  className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 text-gray-900 ${
+    emailError ? "border-red-500 focus:ring-red-500" : "focus:ring-blue-500"
+  }`}
+  placeholder="Enter your email"
+/>
               {emailError && <p className="text-red-500 text-sm mt-1">{emailError}</p>}
             </div>
             
@@ -79,15 +79,15 @@ export default function LoginPage() {
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-semibold mb-2">Password</label>
               <input 
-                type="password"
-                value={password}
-                onChange={handlePasswordChange}
-                required
-                className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 ${
-                  passwordError ? "border-red-500 focus:ring-red-500" : "focus:ring-blue-500"
-                }`}
-                placeholder="Enter your password"
-              />
+  type="password"
+  value={password}
+  onChange={handlePasswordChange}
+  required
+  className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 text-gray-900 ${
+    passwordError ? "border-red-500 focus:ring-red-500" : "focus:ring-blue-500"
+  }`}
+  placeholder="Enter your password"
+/>
               {passwordError && <p className="text-red-500 text-sm mt-1">{passwordError}</p>}
             </div>
 
