@@ -59,6 +59,14 @@ interface Message {
   isLoading?: boolean;
 }
 
+// Define a type for the rows in message.text (order rows)
+interface OrderRow {
+  name: string;
+  rate: string;
+  uom: string;
+  info: string;
+}
+
 const simulateAssistantSteps = (
   setMessages: React.Dispatch<React.SetStateAction<Message[]>>,
   setIsProcessing: React.Dispatch<React.SetStateAction<boolean>>
@@ -289,7 +297,6 @@ const Index = () => {
     }
   };
 
-
   return (
     <div className="flex flex-col h-screen bg-gray-50">
       <header className="flex flex-col items-center justify-center py-4 bg-gradient-to-r from-purple-100 via-white to-purple-100 border-b border-gray-200">
@@ -319,14 +326,15 @@ const Index = () => {
                             </tr>
                           </thead>
                           <tbody>
-                            {message.text.map((row: any, i: number) => (
-                              <tr key={i} className="border-t">
-                                <td className="px-3 py-2">{row.name}</td>
-                                <td className="px-3 py-2">{row.rate}</td>
-                                <td className="px-3 py-2">{row.uom}</td>
-                                <td className="px-3 py-2">{row.info}</td>
-                              </tr>
-                            ))}
+                            {Array.isArray(message.text) &&
+                              (message.text as OrderRow[]).map((row, i) => (
+                                <tr key={i} className="border-t">
+                                  <td className="px-3 py-2">{row.name}</td>
+                                  <td className="px-3 py-2">{row.rate}</td>
+                                  <td className="px-3 py-2">{row.uom}</td>
+                                  <td className="px-3 py-2">{row.info}</td>
+                                </tr>
+                              ))}
                           </tbody>
                         </table>
                       </div>
