@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState, useRef, useEffect } from "react";
 import {
   Send,
@@ -12,7 +12,15 @@ import {
   X,
 } from "lucide-react";
 
-const features = [
+// Define types for the feature objects
+interface Feature {
+  icon: React.ReactNode;
+  text: string;
+  prompt: string;
+  description: string;
+}
+
+const features: Feature[] = [
   {
     icon: <ShoppingCart className="w-6 h-6 text-purple-700" />,
     text: "Create Order",
@@ -39,8 +47,22 @@ const features = [
   },
 ];
 
-// Enhanced animation with staggered effect and improved dot animation
-const simulateAssistantSteps = (setMessages: any, setIsProcessing: any) => {
+// Define a type for the message structure
+interface Message {
+  text: React.ReactNode | string;
+  isUser: boolean;
+  timestamp: Date;
+  attachment?: File;
+  isTable?: boolean;
+  isProcessStep?: boolean;
+  stepIndex?: number;
+  isLoading?: boolean;
+}
+
+const simulateAssistantSteps = (
+  setMessages: React.Dispatch<React.SetStateAction<Message[]>>,
+  setIsProcessing: React.Dispatch<React.SetStateAction<boolean>>
+) => {
   const nextDate = new Date();
   nextDate.setDate(nextDate.getDate() + 1);
   const formattedText = nextDate.toLocaleDateString("en-GB", {
@@ -57,17 +79,17 @@ const simulateAssistantSteps = (setMessages: any, setIsProcessing: any) => {
   ];
 
   let chain = Promise.resolve();
-  
+
   // Clear previous loading messages to avoid duplication
-  setMessages((prev: any) => prev.filter((msg: any) => !msg.isLoading));
-  
+  setMessages((prev) => prev.filter((msg) => !msg.isLoading));
+
   // Staggered display of messages with loading dots
   steps.forEach((step, index) => {
     chain = chain.then(() => {
       return new Promise<void>((resolve) => {
         setTimeout(() => {
-          setMessages((prev: any) => [
-            ...prev.filter((msg: any) => !msg.isProcessStep || msg.stepIndex < index),
+          setMessages((prev) => [
+            ...prev.filter((msg) => !msg.isProcessStep || msg.stepIndex < index),
             {
               text: (
                 <span className={`${step.animClass} loading-step`}>
@@ -85,7 +107,7 @@ const simulateAssistantSteps = (setMessages: any, setIsProcessing: any) => {
           // Show "Hold on" message after the last step
           if (index === steps.length - 1) {
             setTimeout(() => {
-              setMessages((prev: any) => [
+              setMessages((prev) => [
                 ...prev,
                 {
                   text: <span className="shimmer-text">Hold on</span>,
@@ -110,16 +132,7 @@ const simulateAssistantSteps = (setMessages: any, setIsProcessing: any) => {
 
 const Index = () => {
   const [inputValue, setInputValue] = useState("");
-  const [messages, setMessages] = useState<{
-    text: any;
-    isUser: boolean;
-    timestamp: Date;
-    attachment?: File;
-    isTable?: boolean;
-    isProcessStep?: boolean;
-    stepIndex?: number;
-    isLoading?: boolean;
-  }[]>([]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -165,7 +178,7 @@ const Index = () => {
 
     const file = currentAttachment;
 
-    const userMsg = {
+    const userMsg: Message = {
       text: message || (file ? "📎 Uploaded PDF" : ""),
       isUser: true,
       timestamp: new Date(),
@@ -215,7 +228,7 @@ const Index = () => {
         const result = await res.json();
         const items = result?.data?.items || [];
 
-        const formatted = items.map((item: any) => ({
+        const formatted = items.map((item: { item_name: string, rate: string, uom: string, description: string }) => ({
           name: item.item_name,
           rate: item.rate,
           uom: item.uom,
