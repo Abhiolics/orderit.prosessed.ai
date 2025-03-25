@@ -89,7 +89,7 @@ const simulateAssistantSteps = (
       return new Promise<void>((resolve) => {
         setTimeout(() => {
           setMessages((prev) => [
-            ...prev.filter((msg) => !msg.isProcessStep || msg.stepIndex < index),
+            ...prev.filter((msg) => !msg.isProcessStep || msg.stepIndex !== index),
             {
               text: (
                 <span className={`${step.animClass} loading-step`}>
@@ -288,6 +288,7 @@ const Index = () => {
       handleSendMessage(inputValue);
     }
   };
+
 
   return (
     <div className="flex flex-col h-screen bg-gray-50">
