@@ -21,5 +21,172 @@ body {
 }
 
 
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
 
+.shimmer {
+  position: relative;
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: linear-gradient(to right, 
+    rgba(240, 240, 240, 0.6) 4%, 
+    rgba(224, 224, 224, 0.8) 25%, 
+    rgba(240, 240, 240, 0.6) 36%);
+  background-size: 1000px 100%;
+  animation: shimmer 1.8s infinite linear;
+  /* color: transparent; */
+}
 
+.shimmer-text {
+  color: black; /* Show the final text color */
+}
+
+/* Shimmer effect for loading messages */
+.shimmer {
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Loading dots animation */
+.loading-dots::after {
+  content: "";
+  animation: dots 1.5s infinite;
+  display: inline-block;
+  width: 0;
+}
+
+@keyframes dots {
+  0% { content: ""; }
+  25% { content: "."; }
+  50% { content: ".."; }
+  75% { content: "..."; }
+  100% { content: ""; }
+}
+
+/* Chat avatar styles */
+.chat-avatar {
+  @apply flex items-center justify-center w-9 h-9 rounded-full flex-shrink-0;
+}
+
+/* Message bubble styles */
+.message-bubble {
+  @apply shadow-sm max-w-full overflow-hidden transition-all duration-300;
+}
+
+/* Feature card hover effect */
+.feature-card {
+  @apply bg-white transition-all duration-300 hover:shadow-md hover:scale-[1.02] hover:border-purple-200;
+}
+
+/* Loading step animation */
+.loading-step {
+  animation: fadeIn 0.5s ease forwards;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Shimmer text effect */
+.shimmer-text {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.shimmer-text::after {
+  content: "...";
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+  animation: ellipsis 1.5s infinite;
+  width: 1.5em;
+  text-align: left;
+}
+
+@keyframes ellipsis {
+  0% { width: 0; }
+  33% { width: 0.5em; }
+  66% { width: 1em; }
+  100% { width: 1.5em; }
+}
+
+/* Typewriter effect */
+.typewriter {
+  overflow: hidden;
+  border-right: 2px solid #777;
+  white-space: nowrap;
+  animation: 
+    typing 1.5s steps(40, end),
+    blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #777 }
+}
+
+/* Table shimmer effect */
+.table-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.table-shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.2) 20%,
+    rgba(255, 255, 255, 0.5) 60%,
+    rgba(255, 255, 255, 0)
+  );
+  animation: shimmer-sweep 2s infinite;
+}
+
+@keyframes shimmer-sweep {
+  to {
+    transform: translateX(100%);
+  }
+}
