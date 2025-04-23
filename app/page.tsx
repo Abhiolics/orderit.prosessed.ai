@@ -11,6 +11,7 @@ const page = () => {
     {/* <Home/>
     <IntegrationComponent/>
     <PricingPlans/> */}
+    {/* test */}
     <LoginPage/>
     </div>
   )
